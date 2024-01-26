@@ -1,5 +1,6 @@
 create database absenzen;
 
+
 use absenzen;
 
 -- Lehrperson Table
