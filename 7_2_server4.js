@@ -19,7 +19,7 @@ var app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const port = 3000;
+const port = 3421;
 
 app.use(bodyParser.json());
 
@@ -61,8 +61,8 @@ app.get('/Lernende', (req, res) => {
 
     })
 });
-app.get('/Lernende/LernendeID', (req, res) => {
-    connection.query('SELECT * FROM user WHERE id = 1', [req.params.id], (err, rows, fields) => {
+app.get('/Lernende/LernendeID/:LernendeID', (req, res) => {
+    connection.query('SELECT * FROM Lernende WHERE LernendeID = 2', [req.params.id], (err, rows, fields) => {
         if (!err) {
             console.log(rows);
             res.send(rows);
@@ -73,8 +73,8 @@ app.get('/Lernende/LernendeID', (req, res) => {
     })
 });
 
-app.delete('/Lernende/LernendeID', (req, res) => {
-    connection.query(' DELETE FROM user WHERE id = 4 ', [req.params.id], (err, rows, fields) => {
+app.delete('/Lernende/LernendeID/:LernendeID', (req, res) => {
+    connection.query(' DELETE FROM Lernende WHERE LernendeID = ? ', [req.params.id], (err, rows, fields) => {
         if (!err) {
             res.send('Delete operation was successful')
             // res.send(rows)
